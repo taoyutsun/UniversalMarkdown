@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Local settings and secrets
+.env
+_UserSettings/
+
+# Build outputs
+build/
+dist/
+
+# PyInstaller generated specs / debug artifacts
+UniversalMarkdownDebug.spec
+UniversalMarkdownOnefileDebug.spec
+UniversalMarkdown_Portable.spec
+
+# Tool caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# IDE / OS files
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
