@@ -155,9 +155,6 @@ python -m pip install pyinstaller
 API Key **不會** 明文寫入 `settings.json`，而是儲存在：
 
 - **Windows Credential Manager**
-
-這樣的好處是：
-
 - 分享原始碼或 Portable 版本時，不會把 API Key 一起帶出
 - 每位使用者都可在各自的電腦上填入自己的金鑰
 
