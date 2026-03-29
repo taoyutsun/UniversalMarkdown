@@ -65,6 +65,11 @@ def get_runtime_base_dir() -> str:
 RUNTIME_BASE_DIR = get_runtime_base_dir()
 DOTENV_PATH = os.path.join(RUNTIME_BASE_DIR, ".env")
 
+AUTHOR_NAME = "Arthur Tao"
+AUTHOR_WEBSITE_URL = "https://taoyutsun.blogspot.com/"
+AUTHOR_FACEBOOK_URL = "https://facebook.com/arthurtaoyutsun"
+AUTHOR_REPO_URL = "https://github.com/taoyutsun/UniversalMarkdown"
+
 DEFAULT_PROVIDER = "NVIDIA_NIM"
 DEFAULT_DOCX_MODE = "mammoth"
 DEFAULT_OCR_MODE = "fast"
@@ -1364,8 +1369,8 @@ class MainWindow(QMainWindow):
 
     def init_ui(self):
         self.setWindowTitle(APP_TITLE)
-        self.resize(700, 760)
-        self.setMinimumSize(640, 700)
+        self.resize(720, 860)
+        self.setMinimumSize(660, 780)
 
         self.setStyleSheet(
             """
@@ -1559,7 +1564,65 @@ class MainWindow(QMainWindow):
         self.open_folder_btn.clicked.connect(self.open_result_folder)
         main_layout.addWidget(self.open_folder_btn)
 
+        self.author_panel = QFrame()
+        self.author_panel.setStyleSheet(
+            """
+            QFrame {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 12px;
+            }
+            """
+        )
+        author_layout = QVBoxLayout(self.author_panel)
+        author_layout.setContentsMargins(16, 14, 16, 14)
+        author_layout.setSpacing(8)
+
+        self.author_title_label = QLabel("關於作者")
+        self.author_title_label.setStyleSheet("font-size: 14px; color: #f5f5f5; font-weight: bold;")
+        author_layout.addWidget(self.author_title_label)
+
+        self.author_intro_label = QLabel(
+            "本工具由 Arthur Tao 設計與維護，歡迎透過下列連結了解作者背景與專案原始碼。"
+        )
+        self.author_intro_label.setWordWrap(True)
+        self.author_intro_label.setStyleSheet("font-size: 12px; color: #d7def2;")
+        author_layout.addWidget(self.author_intro_label)
+
+        self.author_name_label = QLabel(f"作者：{AUTHOR_NAME}")
+        self.author_name_label.setStyleSheet("font-size: 13px; color: #ffffff;")
+        author_layout.addWidget(self.author_name_label)
+
+        self.author_links_label = QLabel(
+            f'<a href="{AUTHOR_WEBSITE_URL}">個人網站</a>'
+            f' &nbsp;|&nbsp; <a href="{AUTHOR_FACEBOOK_URL}">Facebook</a>'
+            f' &nbsp;|&nbsp; <a href="{AUTHOR_REPO_URL}">檢視原始碼</a>'
+        )
+        self.author_links_label.setOpenExternalLinks(True)
+        self.author_links_label.setTextFormat(Qt.TextFormat.RichText)
+        self.author_links_label.setWordWrap(True)
+        self.author_links_label.setStyleSheet("font-size: 12px; color: #8ab4f8;")
+        author_layout.addWidget(self.author_links_label)
+
+        self.author_license_label = QLabel("本工具採 MIT 授權，歡迎使用與分享，並保留原作者與來源資訊。")
+        self.author_license_label.setWordWrap(True)
+        self.author_license_label.setStyleSheet("font-size: 11px; color: #aab4c8;")
+        author_layout.addWidget(self.author_license_label)
+
+        main_layout.addWidget(self.author_panel)
+
         main_layout.addStretch(1)
+
+        self.footer_label = QLabel(
+            f'本轉換小工具由 {AUTHOR_NAME} 設計開發，歡迎使用分享並標註原開發者。<br>'
+            f'<a href="{AUTHOR_WEBSITE_URL}">亞瑟 ASK - 職涯隨筆與生活漫談</a>'
+        )
+        self.footer_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.footer_label.setOpenExternalLinks(True)
+        self.footer_label.setTextFormat(Qt.TextFormat.RichText)
+        self.footer_label.setWordWrap(True)
+        self.footer_label.setStyleSheet("font-size: 11px; color: #c8d2e6;")
+        main_layout.addWidget(self.footer_label)
 
     def rebuild_provider_selector(self):
         provider_names = get_provider_names()
