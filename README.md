@@ -1,5 +1,7 @@
 # Universal Markdown 極簡轉檔器
 
+[繁體中文](README.md) | [English](README.en.md)
+
 一款以 **PyQt6** 製作的 Windows 桌面 GUI 小工具，專門用來將常見文件格式快速轉成 Markdown。
 
 本專案整合了兩條成熟技術路線：
